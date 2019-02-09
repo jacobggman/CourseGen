@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחולל שמות ספרים</title>
+</head>
+<body dir="rtl" align="center" style="font-family:sans-serif;">
+
+<h3>מחולל רפואות הקבלה</h2>
+
+<p><b id="disease">מחלה</b> <span id="content">טיפול</span></p>
+
+<p><button onclick="newCourse()" style="width:12em;height:3em;">עוד אחד</button></p>
+<br><br>
+<p><a href='about.html'>אודות</a></p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SDKFPvirm_0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<script>
+diseases = [
+  "אבעבועות",
+  "דיבוק",
+  "חנק",
+  "קדחת",
+  "חירשות",
+  "מחלת הנפילה",
+  "התמכרות ליין",
+  "כישוף",
+  "לריפוי פחדים אצל ילדים",
+  "כאבים ברגליים",
+];
+a0 = [
+  "לקחת",
+];
+
+a1 = [
+"מוח",
+"כבד",
+"חוט שדרה",
+"מיץ מרה",
+"ציפורניים",
+"זבל",
+"חלב",
+"עור",
+"דם",
+"ביצים",
+"עין",
+"ריר מפה",
+"ריאה",
+"לב",
+];
+
+a2 = ["של"];
+
+a3 = [
+"דוב",
+"שור",
+"פרה",
+"תרנגול",
+"כלב",
+"עז",
+"חמור",
+"זאב",
+"נמלים",
+"חסידה",
+"עורב שחור",
+"כלב שחור",
+"ציפור דרור",
+"צפרדעים קטנות",
+"דג חי",
+"אפרוחים",
+];
+
+a4 = [","];
+
+a5 = [
+"להרתיח על האש",
+"לכתוש לאבקה",
+"לייבש ולפורר היטב",
+"לשרוף על מחבת מלובן",
+"לערבב בחומץ",
+"לערבב עם יין",
+"לערבב בחלמון ביצה",
+"לבשל עם שמן זית",
+"לכתוב את המילה \"ריטא\"",
+"לכתוב את השמות עמיו\"ן טמיו\"ן",
+"להשרות במים חמימים",
+"לשרוף לאפר",
+"לחמם עד שיהיה חם כמו גחלת",
+];
+
+a6 = [
+"ולאחר מכן",
+"ומיד",
+"ואז"];
+
+a7 = [
+"לטפטף לאוזן",
+"לשים בתוך עוגה",
+"לשים בתוך עוגה",
+"לשתות את מי הבישול",
+"לשים על הראש",
+"לתת לחולה לשתות",
+"לשים בפה של החולה",
+"לתלות על הילד",
+"לתת לכלב לאכול",
+"להשתין עליו",
+"למרוח על איבר המין",
+];
+
+a8 = [
+"בכיכר השוק",
+"ללא ידיעתו",
+"מעט בכל יום",
+"מבלי להגיד זאת לאיש",
+"בזמן ההתקף",
+"כך החולה יתרפא לתמיד",
+"ויבריא",
+"עם מעט זעפרן",
+"במשך שמונה ימים",
+];
+
+function randElement(items) {
+	return items[Math.floor(Math.random()*items.length)];
+}
+
+function newCourse() {
+	var disease = document.getElementById("disease");
+	disease.innerHTML = "לטיפול ב"+randElement(diseases)+":";
+
+    var content = document.getElementById("content");
+    content.innerHTML = [a0, a1, a2, a3,a4,a5,a6,a7,a8].map(randElement).join(" ");
+}
+
+newCourse();
+</script>
+</body>
+</html>
