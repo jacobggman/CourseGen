@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחולל תיאוריות קונספירציה</title>
+</head>
+<body dir="rtl" align="center" style="font-family:sans-serif;">
+
+<h3>מחולל תיאוריות קונספירציה</h2>
+
+<p><span id="content">תוכן</span></p>
+
+<p><button onclick="newCourse()" style="width:12em;height:3em;">עוד אחד</button></p>
+<br><br>
+<p><a href='about.html'>אודות</a></p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YstKyK3ebJ4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<script>
+amount = [
+  "",
+  "",
+  "",
+  "",
+  "100% מ",
+  "90% מ",
+  "80% מ",
+  "70% מ",
+  "רבע מ",
+];
+subject = [
+  "כדור הארץ",
+  "המוח שלנו",
+  "כל חיסון",
+  "פול מקרטני",
+  "החמצן שאנחנו נושמים",
+  "כל כיסא בעולם",
+  "המזון שאנחנו אוכלים",
+  "ראש הממשלה של סין",
+  "דני רופ",
+  "כל שחקן בהפועל רמת גן",
+  "כל כלי מוזיקלי",
+  "כל מי שקוראים לו דרור",
+  "כל מי שנולד ביפן",
+  "ירון פאר מערוץ הקניות",
+  "קייזר סוזה",
+  "אהוד בנאי",
+];
+
+verb = [
+"הוא ",
+"עשוי מ",
+"מת והוחלף על ידי ",
+"הוא בעצם ",
+"הוא בכלל ",
+"הוא כפיל של ",
+"נשמע כמו ",
+"יותר בריא מ",
+"נוצר על ידי ",
+"מורכב מ",
+"גורם ל",
+];
+
+obj = [
+"המצאה של ביבי",
+"גורילה",
+"מלח",
+"ריבוע",
+"מסטיק",
+"פלסטיק",
+"ארמדילו",
+"מאסטר ספלינטר",
+"בנג'ו",
+"לגו",
+"נאו-נאצי",
+"צ'ארלי צ'אפלין",
+"קונספירציה",
+"מים",
+"טל ברמן",
+"אימפוטנציה",
+"סרטן",
+"מייקל ריצ'רדס",
+"קוין ספייסי",
+];
+
+function randElement(items) {
+	return items[Math.floor(Math.random()*items.length)];
+}
+
+function newCourse() {
+    var content = document.getElementById("content");
+    content.innerHTML = [amount, subject, [" "], verb, obj].map(randElement).join("");
+}
+
+newCourse();
+</script>
+</body>
+</html>
