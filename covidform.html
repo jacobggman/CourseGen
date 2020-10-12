@@ -7,6 +7,13 @@
 body {
   direction: rtl;
   font-family: sans-serif;
+  background-color: #cccccc;
+}
+.content {
+  width: 900px;
+  margin: 5px auto;
+  padding: 20px 40px;
+  background-color: white;
 }
 .to-fill {
   text-decoration: underline;
@@ -14,29 +21,30 @@ body {
 }
 
 #output {
-  border: solid 1px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 2px 4px 0 rgba(60,64,67,0.302), 0 3px 7px 3px rgba(60,64,67,0.149);
 }
 </style>
 </head>
 <body>
+<div class="content">
 <h3>הכנס פרטים</h3>
 <form>
 <div>
 	<label>שם התלמיד: <input type="text" id="name-input"></label>
-	<label>מס' ת"ז: <input type="text" id="id-input"></label>
+	<label>ת"ז:<input type="text" id="id-input"></label>
+</div>
+<div>
+	<label>שם ההורה: <input type="text" id="parent-input"></label>
+	<label>ת"ז: <input type="text" id="parent-id-input"></label>
+	<label>חתימה: <input type="text" id="signature-input"></label>
 </div>
 <div>
 	<label>תאריך: <input type="date" id="date-input" min="2020-03-01"></label>
 	<label>(ללא תאריך <input type="checkbox" id="no-date">)</label>
 </div>
-<div>
-	<label>שם ההורה: <input type="text" id="parent-input"></label>
-	<label>תעודת זהות: <input type="text" id="parent-id-input"></label>
-	<label>חתימה: <input type="text" id="signature-input"></label>
-</div>
-<div>
-<input type="button" value="צור טופס" onclick="generateForm()">
-</div>
+<br>
 </form>
 <div>
 <div id="output">
@@ -46,7 +54,7 @@ body {
 		font-weight: bold;
 	}
 	</style>
-	<div dir="rtl" style="font-family: serif;">
+	<div dir="rtl" style="font-family: Narkisim, David, serif;">
 		<h3>הצהרת בריאות לתלמיד</h3>
 		<div>
 			שם התלמיד: <span id="name" class="to-fill">__________</span>
@@ -70,6 +78,7 @@ body {
 <div><input type="button" value="הדפס" onclick="printPageArea('output')"></div>
 <div>כדי לחסוך נייר אפשר להדפיס כ-PDF ולשלוח לגננת <a href="http://web.whatsapp.com" target="whatsapp">בווצאפ</a> :)</div>
 <div>יצירת הטופס מתבצעת על המחשב של המשתמש והפרטים לא נשלחים לשום מקום. עם זאת, השימוש באתר באחריות המשתמשים.</div>
+</div>
 
 <script>
 Date.prototype.toDateInputValue = (function() {
