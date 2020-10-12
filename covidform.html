@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>הצהרת בריאות לתלמיד</title>
 <style>
@@ -10,7 +11,7 @@ body {
   background-color: #017a95;
 }
 .content {
-  width: 900px;
+  max-width: 900px;
   margin: 5px auto;
   padding: 20px 40px;
   background-color: white;
@@ -25,6 +26,31 @@ body {
   margin: 10px;
   box-shadow: 0 2px 4px 0 rgba(60,64,67,0.302), 0 3px 7px 3px rgba(60,64,67,0.149);
 }
+
+#print-button {
+	background-color: #017a95;
+	border: none;
+	border-radius: 8px;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+#print-button:hover {
+	background-color: #019B;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  label {
+    display: block;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -32,7 +58,7 @@ body {
 <h3>הכנס פרטים</h3>
 <form>
 <div>
-	<label>שם התלמיד: <input type="text" id="name-input"></label>
+	<label>שם התלמיד/ה:<input type="text" id="name-input"></label>
 	<label>ת"ז:<input type="text" id="id-input"></label>
 </div>
 <div>
@@ -75,7 +101,7 @@ body {
 		<br>
 	</div>
 </div>
-<div><input type="button" value="הדפס" onclick="printPageArea('output')"></div>
+<div align="center"><input type="button" value="הדפס" onclick="printPageArea('output')" id="print-button"></div>
 <div>כדי לחסוך נייר אפשר להדפיס כ-PDF ולשלוח לגננת <a href="http://web.whatsapp.com" target="whatsapp">בווצאפ</a> :)</div>
 <div>יצירת הטופס מתבצעת על המחשב של המשתמש והפרטים לא נשלחים לשום מקום. עם זאת, השימוש באתר באחריות המשתמשים.</div>
 </div>
