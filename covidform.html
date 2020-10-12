@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>הצהרת בריאות לתלמיד</title>
+<style>
+body {
+  direction: rtl;
+  font-family: sans-serif;
+}
+.to-fill {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#output {
+  border: solid 1px;
+}
+</style>
+</head>
+<body>
+<h3>הכנס פרטים</h3>
+<form>
+<div>
+	<label>שם התלמיד: <input type="text" id="name-input"></label>
+	<label>מס' ת"ז: <input type="text" id="id-input"></label>
+</div>
+<div>
+	<label>תאריך: <input type="date" id="date-input" min="2020-03-01"></label>
+	<label>(ללא תאריך <input type="checkbox" id="no-date">)</label>
+</div>
+<div>
+	<label>שם ההורה: <input type="text" id="parent-input"></label>
+	<label>תעודת זהות: <input type="text" id="parent-id-input"></label>
+	<label>חתימה: <input type="text" id="signature-input"></label>
+</div>
+<div>
+<input type="button" value="צור טופס" onclick="generateForm()">
+</div>
+</form>
+<div>
+<div id="output">
+	<style>
+	.to-fill {
+		text-decoration: underline;
+		font-weight: bold;
+	}
+	</style>
+	<div dir="rtl" style="font-family: serif;">
+		<h3>הצהרת בריאות לתלמיד</h3>
+		<div>
+			שם התלמיד: <span id="name" class="to-fill">__________</span>
+			תעודת זהות: <span id="id" class="to-fill">__________</span>
+		</div>
+			<br>
+			<div>אני מצהיר כדלהלן:</div>
+			<ul>
+				<li>מדדתי חום לילדי/ילדתי, ונמצא כי חום גופו/ה מתחת ל-38 מעלות צלזיוס.</li>
+				<li>ילדי/ילדתי לא משתעל ואין לו קשיים בנשימה (למעט שיעול או קושי בנשימה הנובע ממצב כרוני כגון אסטמה או אלרגיה אחרת).</li>
+				<li>למיטב ידיעתי ילדי לא היה במגע קרוב עם חולה קורונה בשבועיים האחרונים</li>
+			</ul>
+		שם האחראי/הורה: <span id="parent" class="to-fill">__________</span>
+		תעודת זהות: <span id="parent-id"  class="to-fill">__________</span>
+		תאריך: <span id="date" class="to-fill">__________</span>
+		חתימה: <span id="signature" class="to-fill">__________</span>
+		<br>
+		<br>
+	</div>
+</div>
+<div><input type="button" value="הדפס" onclick="printPageArea('output')"></div>
+<div>כדי לחסוך נייר אפשר להדפיס כ-PDF ולשלוח לגננת <a href="http://web.whatsapp.com" target="whatsapp">בווצאפ</a> :)</div>
+
+<script>
+Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
+function printPageArea(areaID){
+    var printContent = document.getElementById(areaID);
+    var WinPrint = window.open('', '', 'width=900,height=650');
+    WinPrint.document.write(printContent.innerHTML);
+    WinPrint.document.close();
+    WinPrint.focus();
+    WinPrint.print();
+    WinPrint.close();
+}
+
+function orBlank(str) {
+  if (str) return str;
+  return '__________';
+}
+
+function generateForm() {
+	$('#name').text(orBlank($('#name-input').val()));
+	$('#id').text(orBlank($('#id-input').val()));
+	$('#parent').text(orBlank($('#parent-input').val()));
+	$('#parent-id').text(orBlank($('#parent-id-input').val()));
+	$('#signature').text(orBlank($('#signature-input').val()));
+	
+	if ($('#no-date').is(':checked')) {
+		$('#date').text(orBlank(''));
+	} else {
+		$('#date').text($('#date-input').val().split('-').reverse().join('/'));
+	}	
+}
+document.getElementById('date-input').value = new Date().toDateInputValue();
+
+$("form :input").change(function() {
+	generateForm();
+});
+</script>
+</body>
+</html>
